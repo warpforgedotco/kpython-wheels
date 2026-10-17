@@ -22,8 +22,10 @@ REPO = "warpforgedotco/kpython-wheels"
 
 
 def gh(*args: str, check: bool = True) -> subprocess.CompletedProcess:
-    return subprocess.run(["gh", *args, "--repo", REPO], check=check, text=True,
-                          capture_output=True)
+    result = subprocess.run(["gh", *args, "--repo", REPO], text=True, capture_output=True)
+    if check and result.returncode != 0:
+        sys.exit(f"gh {' '.join(args)} failed:\n{result.stderr.strip()}")
+    return result
 
 
 def main() -> int:
