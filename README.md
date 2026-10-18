@@ -17,6 +17,10 @@ For Python 3.15, built from source with the recipes and tested with them:
 - **macOS arm64** (`mp3_15-macos-arm64`): numpy, scipy, pandas, scikit-learn, statsmodels, matplotlib, contourpy, pillow, kiwisolver, cffi, pyyaml, multidict, frozenlist, propcache, yarl and aiohttp; the dependencies OpenBLAS, gcc-rt, raqm, jpeg and libyaml; and the build tools clang, gcc, cmake and ninja.
 - **Linux x86_64** (`mp3_15-linux-x86_64`): numpy, scipy, pandas, scikit-learn, statsmodels, matplotlib, contourpy, pillow, kiwisolver and cffi; the dependencies OpenBLAS, gcc-rt, raqm and jpeg; and the build tools cmake, ninja and meson.
 
+For Python 3.14, MonolithPy's mirror has wheels, but its macOS numpy 2.5.3 doesn't link BLAS into matmul (60 times slower):
+
+- **macOS arm64** (`mp3_14-macos-arm64`): numpy 2.5.4 with OpenBLAS 0.3.34 and gcc-rt, built with the fork's recipes. As a newer version, pip prefers it to the mirror's.
+
 The macOS wheels target macOS 11.0, like the interpreter, and are tagged `macosx_11_0_arm64`. The Linux wheels were built on Ubuntu 26.04 and are tagged `manylinux_2_43`, for glibc 2.43 or newer.
 
 ## Layout
